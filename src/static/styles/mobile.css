@@ -1,0 +1,142 @@
+:root {
+  --margin: 1.6rem;
+  --padding: 1.6rem;
+}
+
+a,
+body,
+div,
+ul,
+li,
+section,
+main,
+header,
+menu,
+nav,
+footer,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+form,
+input,
+figure,
+image,
+picture,
+span {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ffffff;
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+picture {
+  height: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  background-color: var(--background-color);
+  height: 100%;
+}
+
+#app {
+  min-width: 320px;
+	min-height: 100%;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: max-content 80% max-content;
+}
+
+.header, .footer {
+	min-width: 320px;
+	min-height: 80px;
+	max-height: 80px;
+}
+
+.header {
+	background-color: #ffffff;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	grid-column: 1/7;
+	grid-row: 1/2;
+}
+
+.header .logo {
+  width: min-content;
+  height: max-content;
+}
+
+.main {
+	width: 100%;
+	min-width: 320px;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: 1fr max-content 1fr;
+  justify-items: center;
+	grid-column: 1/7;
+	grid-row: 2/3;
+}
+
+.main .image-container {
+	background-color: black;
+	height: 150px;
+	grid-row: 1/2;
+}
+
+.main :is(.image-container, .question, .answer) {
+  width: 100%;
+  justify-self: start;
+  margin-block: var(--margin);
+  grid-column: 2/6;
+}
+
+.question {
+  grid-row: 2/3;
+}
+
+.answer {
+	grid-row: 3/4;
+}
+
+.options {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-block: var(--margin);
+}
+
+.options :is(span) {
+  margin-block: 0.8rem;
+}
+
+.footer {
+  background-color: black;
+  grid-column: 1/7;
+  grid-row: 3/4;
+}
