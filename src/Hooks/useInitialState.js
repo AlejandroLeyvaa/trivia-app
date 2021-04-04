@@ -8,14 +8,20 @@ const useInitialState = () => {
       ...state,
       user: Object.assign(state.user, payload),
     });
-
-    console.log(state);
   };
 
-  return{
+  function addAnswer(payload) {
+    setState({
+      ...state,
+      currentAnswer: Object.assign(state.currentAnswer, payload),
+    });
+  }
+
+  return {
     state,
     addUser,
-  }
+    addAnswer,
+  };
 
 };
 

@@ -96,16 +96,11 @@ body {
 	min-width: 320px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	grid-template-rows: 1fr max-content 1fr;
+	/* grid-template-rows: 1fr max-content 1fr; */
+	grid-template-rows: 1fr max-content;
   justify-items: center;
 	grid-column: 1/7;
 	grid-row: 2/3;
-}
-
-.main .image-container {
-	background-color: black;
-	height: 150px;
-	grid-row: 1/2;
 }
 
 .main :is(.image-container, .question, .answer) {
@@ -116,11 +111,20 @@ body {
 }
 
 .question {
-  grid-row: 2/3;
+	grid-row: 1/2;
+	grid-template-rows: 1fr max-content;
+	display: grid;
+}
+
+.question .image-container {
+	background-color: black;
+	height: 150px;
+	grid-row: 1/2;
+	grid-column: 1/7;
 }
 
 .answer {
-	grid-row: 3/4;
+	grid-row: 2/3;
 }
 
 .options {

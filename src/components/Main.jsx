@@ -1,99 +1,116 @@
-import React, { useState } from 'react';
-import ImageContainer from './ImageContainer';
+import React, { useState, useEffect, useContext } from 'react';
+import AppContext from '../context/AppContext';
+import Questions from './Questions';
+
+import unchecked from '../utils/unchecked';
 
 const Main = () => {
-
+  const {
+    state: { content },
+  } = useContext(AppContext);
+  const [title, setTitle] = useState({});
+  const [questions, setQuestions] = useState({});
   const [answers, setAnswers] = useState({});
-  const [elementName, setElementName] = useState({});
-
-  function unchecked(target, name) {
-    const elements = target.parentElement.parentElement.getElementsByTagName('input');
-    const arrElements = [...elements];
-    arrElements.map((el) => {
-      const input = el;
-      if (input.name === name) {
-        input.checked = true;
-      } else {
-        input.checked = false;
-      }
-      return null;
-    });
-  };
+  const [correctAnswer, setCorrectAnswers] = useState({});
+  let [count, setCount] = useState(0);
+  let currentAnswer = null;
+  let currentElement = null;
 
   function handleAnswer(event) {
     event.preventDefault();
-    if (answers[elementName] === answers['third']) {
-      alert('You win');
+    if (currentAnswer !== null) {
+      if (currentAnswer === correctAnswer[0]) {
+        alert('Win');
+      }
     } else {
-      alert('You lose');
+      alert('Seleccione una respuesta');
+      return true;
+    }
+
+    if (count === content.length - 1) {
+      count = content.length - 1;
+    } else {
+      unchecked(currentElement, true);
+      setCount((count += 1));
     }
   }
 
+  useEffect(() => {
+    console.time();
+    const getTitle = [],
+      getQuestions = [],
+      getAnswers = [],
+      getCorrectAnswers = [];
+
+    content.forEach((item) => {
+      const { title, question, options, correctAnswer } = item;
+      getTitle.push(title);
+      getQuestions.push(question);
+      getAnswers.push(options);
+      getCorrectAnswers.push(correctAnswer);
+    });
+    setTitle(getTitle);
+    setQuestions(getQuestions);
+    setAnswers(getAnswers);
+    setCorrectAnswers(getCorrectAnswers);
+    console.timeEnd();
+
+  }, []);
+
   function checked(target) {
-    const { name, checked } = target;
-    const answers = {
-      first: false,
-      second: false,
-      third: false,
-    };
-    answers[name] = checked;
-    setAnswers(answers);
-    setElementName(name);
-    unchecked(target, name);
-  };
+    const { name } = target;
+    currentAnswer = name;
+    unchecked(target);
+  }
 
   function handleClick(event) {
     const { target } = event;
+    currentElement = target;
     checked(target);
-    target.removeEventListener('click', handleClick);
-  };
+  }
 
   return (
     <main className='main'>
-      <ImageContainer cls='image-container' />
-      <div className='question'>
-        <h2>Environment</h2>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
-          ullam laborum animi inventore repudiandae! Ratione eum quo
-          voluptatibus porro praesentium mollitia fugiat? Corporis iure
-          cupiditate esse officia? Magni, sit perspiciatis.
-        </p>
-      </div>
+      {title.length > 0 && (
+        <Questions title={title[count]} question={questions[count]} />
+      )}
+
       <div className='answer'>
         <h3>Selecciona una respuesta</h3>
-        <form action=''>
+        <form>
+          {answers.length > 0 && (
+            <>
+              <label className='options' htmlFor={answers[count][0]}>
+                <span>{answers[count][0]}</span>
+                <input
+                  type='checkbox'
+                  name={answers[count][0]}
+                  onClick={handleClick}
+                />
+              </label>
 
-          <label className='options' htmlFor='first'>
-            <span>First</span>
-            <input type='checkbox' name='first' onClick={handleClick} />
-          </label>
+              <label className='options' htmlFor={answers[count][1]}>
+                <span>{answers[count][1]}</span>
+                <input
+                  type='checkbox'
+                  name={answers[count][1]}
+                  onClick={handleClick}
+                />
+              </label>
 
-          <label className='options' htmlFor='second'>
-            <span>Second</span>
-            <input type='checkbox' name='second' onClick={handleClick} />
-          </label>
-
-          <label className='options' htmlFor='third'>
-            <span>Third</span>
-            <input type='checkbox' name='third' onClick={handleClick} />
-          </label>
-
-          <h2>
-            First
-            {answers.first}
-          </h2>
-          <h2>
-            Second
-            {answers.second}
-          </h2>
-          <h2>
-            Third
-            {answers.third}
-          </h2>
-
-          <button type='button' onClick={handleAnswer}>Continue</button>
-
+              <label className='options' htmlFor={answers[count][2]}>
+                <span>{answers[count][2]}</span>
+                <input
+                  type='checkbox'
+                  name={answers[count][2]}
+                  onClick={handleClick}
+                />
+              </label>
+            </>
+          )}
+          <button type='button' onClick={handleAnswer}>
+            Continue
+          </button>
         </form>
       </div>
     </main>
