@@ -1,5 +1,23 @@
 const initialState = {
   user: {},
+  theory: [
+    {
+      a: 'A',
+      b: 'B',
+    },
+    {
+      a: 'C',
+      b: 'D',
+    },
+    {
+      a: 'E',
+      b: 'F',
+    },
+    {
+      a: 'G',
+      b: 'H',
+    },
+  ],
   content: [
     {
       title: 'In Software',
