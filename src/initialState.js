@@ -2,8 +2,8 @@ const initialState = {
   user: {},
   theory: [
     {
-      a: 'A',
-      b: 'B',
+      a: 'Impacto ambental',
+      b: 'Magintud',
     },
     {
       a: 'C',
@@ -20,25 +20,7 @@ const initialState = {
   ],
   content: [
     {
-      title: 'In Software',
-      question: 'Hello',
-      options: ['world', 'word', 'worm'],
-      correctAnswer: 'world',
-    },
-    {
-      title: 'In Software 2',
-      question: 'Hello',
-      options: ['world', 'word', 'worm'],
-      correctAnswer: 'world',
-    },
-    {
-      title: 'In Software 3',
-      question: 'Hello',
-      options: ['world', 'word', 'worm'],
-      correctAnswer: 'world',
-    },
-    {
-      title: 'In Software 4',
+      title: 'Impacto ambiental',
       question: 'Hello',
       options: ['world', 'word', 'worm'],
       correctAnswer: 'world',

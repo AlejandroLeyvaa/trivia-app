@@ -5,7 +5,8 @@ import ImageContainer from '../components/ImageContainer';
 
 import AppContext from '../context/AppContext';
 
-const Home = () => {
+const Home = (props) => {
+  console.log({props})
   const {
     state: { theory },
   } = useContext(AppContext);

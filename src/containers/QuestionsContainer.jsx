@@ -72,51 +72,47 @@ const QuestionsContainer = () => {
 
   return (
     <>
-      <Header />
-      <main className='main'>
-        {title.length > 0 && (
-          <Questions title={title[count]} question={questions[count]} />
-        )}
-        <div className='answer'>
-          <h3>Selecciona una respuesta</h3>
-          <form>
-            {answers.length > 0 && (
-              <>
-                <label className='options' htmlFor={answers[count][0]}>
-                  <span>{answers[count][0]}</span>
-                  <input
-                    type='checkbox'
-                    name={answers[count][0]}
-                    onClick={handleClick}
-                  />
-                </label>
+      {title.length > 0 && (
+        <Questions title={title[count]} question={questions[count]} />
+      )}
+      <div className='answer'>
+        <h3>Selecciona una respuesta</h3>
+        <form>
+          {answers.length > 0 && (
+            <>
+              <label className='options' htmlFor={answers[count][0]}>
+                <span>{answers[count][0]}</span>
+                <input
+                  type='checkbox'
+                  name={answers[count][0]}
+                  onClick={handleClick}
+                />
+              </label>
 
-                <label className='options' htmlFor={answers[count][1]}>
-                  <span>{answers[count][1]}</span>
-                  <input
-                    type='checkbox'
-                    name={answers[count][1]}
-                    onClick={handleClick}
-                  />
-                </label>
+              <label className='options' htmlFor={answers[count][1]}>
+                <span>{answers[count][1]}</span>
+                <input
+                  type='checkbox'
+                  name={answers[count][1]}
+                  onClick={handleClick}
+                />
+              </label>
 
-                <label className='options' htmlFor={answers[count][2]}>
-                  <span>{answers[count][2]}</span>
-                  <input
-                    type='checkbox'
-                    name={answers[count][2]}
-                    onClick={handleClick}
-                  />
-                </label>
-              </>
-            )}
-            <button className='button' type='button' onClick={handleAnswer}>
-              Continue
-            </button>
-          </form>
-        </div>
-      </main>
-      <Footer />
+              <label className='options' htmlFor={answers[count][2]}>
+                <span>{answers[count][2]}</span>
+                <input
+                  type='checkbox'
+                  name={answers[count][2]}
+                  onClick={handleClick}
+                />
+              </label>
+            </>
+          )}
+          <button className='button' type='button' onClick={handleAnswer}>
+            Continue
+          </button>
+        </form>
+      </div>
     </>
   );
 };

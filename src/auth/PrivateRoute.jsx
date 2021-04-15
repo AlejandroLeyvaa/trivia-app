@@ -5,7 +5,7 @@ import helper from './helper';
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={(props) =>
+    render={(props) => (
       helper().isAuthenticated() ? (
         <Component {...props} />
       ) : (
@@ -15,8 +15,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             state: { from: props.location },
           }}
         />
-      )
-    }
+      ))}
+
   />
 );
 

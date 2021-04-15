@@ -1,50 +1,59 @@
 import React, { useState, useRef } from 'react';
-import UsersApi from '../user/UsersApi';
+import { useHistory, Redirect } from 'react-router-dom';
+import AuthApi from '../auth/AuthApi';
+import helper from '../auth/helper';
 
-const Signup = () => {
+const SignIn = ({ location: { state } }) => {
+
+  const { from } = state || {
+    from: {
+      pathname: '/',
+    },
+  };
+
   const form = useRef(null);
-  const usersApi = new UsersApi();
+  const authApi = new AuthApi();
   const [values, setValues] = useState({});
 
   const handleSubmit = () => {
     const formData = new FormData(form.current);
     const user = {
-      name: formData.get('name'),
       password: formData.get('password'),
       email: formData.get('email'),
     };
 
-    usersApi.createUser(user).then((data) => {
-      if (data.error) {
+    console.log(user);
+
+    authApi.signIn(user).then((data) => {
+      console.log(data);
+      if (data.error || data === undefined) {
         setValues({ user, error: data.error });
       } else {
-        setValues({ user, error: '', open: true });
+        helper().authenticate(data, () => {
+          setValues({ user, error: '', redirect: true });
+        });
       }
     });
   };
 
-  console.log(values);
+  if (values.redirect) {
+    return (<Redirect to={from} />);
+  }
 
   return (
     <>
       <div className='signup' onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
+        <h2>Sign In</h2>
         <form ref={form}>
-          <input type='text' name='name' placeholder='name' />
           <input type='text' name='email' placeholder='email' />
           <input type='text' name='password' placeholder='password' />
           <button className='button' type='button' onClick={handleSubmit}>
-            Sign up
+            Sign In
           </button>
         </form>
-        {values.open > 0 && (
-          <div className='modal'>
-            <h2>Hello world</h2>
-          </div>
-        )}
       </div>
     </>
   );
 };
 
-export default Signup;
+export default SignIn;

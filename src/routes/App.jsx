@@ -7,12 +7,14 @@ import QuestionsContainer from '../containers/QuestionsContainer';
 import Main from '../components/Main';
 import Users from '../components/Users';
 import SignUp from '../containers/SignUp';
-// import PrivateRoute from '../auth/PrivateRoute';
-// import EditProfile from '../components/EditProfile';
-
-import '../static/styles/mobile.css';
+import SignIn from '../containers/SignIn';
+import Profile from '../containers/Profile';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PrivateRoute from '../auth/PrivateRoute';
+import EditProfile from '../components/EditProfile';
+
+import '../static/styles/mobile.css';
 
 const App = () => {
   const initialState = useInitialState();
@@ -26,8 +28,10 @@ const App = () => {
             <Route exact path='/' component={Home} />
             <Route exact path='/questions' component={QuestionsContainer} />
             <Route exact path='/users' component={Users} />
+            <Route exact path='/user/:userId' component={Profile} />
             <Route exact path='/signup' component={SignUp} />
-            {/* <PrivateRoute exact path='/user/edit/:userId' component={EditProfile} /> */}
+            <Route exact path='/signin' component={SignIn} />
+            <PrivateRoute exact path='/user/edit/:userId' component={EditProfile} />
           </Switch>
         </Main>
         <Footer />

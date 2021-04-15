@@ -1,35 +1,32 @@
 class Auth {
-  constructor(API) {
-    this.API = API;
+  constructor() {
+    this.API = 'http://localhost:3001/auth';
   }
 
   async signIn(user) {
-    let response = null;
+    console.log({user});
     try {
-      response = fetch(this.API, {
+      const response = await fetch(`${this.API}/signin`, {
         method: 'POST',
-        signal,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        credentials: 'include',
         body: JSON.stringify(user),
       });
+      return await response.json();
     } catch (err) {
       console.error(err);
     }
-    return response.json();
   }
 
   async signOut() {
-    let response = null;
     try {
-      response = await fetch(this.API, { method: 'GET' });
+      const response = await fetch(`${this.API}/signout`, { method: 'GET' });
+      return await response.json();
     } catch (err) {
       console.error(err);
     }
-    return response;
   }
 }
 

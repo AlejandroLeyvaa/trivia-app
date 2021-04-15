@@ -1,6 +1,6 @@
 class UsersApi {
   constructor() {
-    this.API = 'http://localhost:3001/api/users/';
+    this.API = 'http://localhost:3001/api/users';
   }
 
   async createUser(user) {
@@ -25,7 +25,6 @@ class UsersApi {
         method: 'GET',
         signal,
       });
-      console.log({response})
       return await response.json();
     } catch (err) {
       console.log(err);
@@ -34,13 +33,13 @@ class UsersApi {
 
   async read(params, credentials, signal) {
     try {
-      const response = fetch(`${this.API}/${params.userId}`, {
+      const response = await fetch(`${this.API}/${params}`, {
         method: 'GET',
         signal,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: `'Bearer '${credentials.t}`,
+          Authorization: `'Bearer '${credentials}`,
         },
       });
       return await response.json();
