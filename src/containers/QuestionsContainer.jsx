@@ -76,7 +76,9 @@ const QuestionsContainer = () => {
         <Questions title={title[count]} question={questions[count]} />
       )}
       <div className='answer'>
-        <h3>Selecciona una respuesta</h3>
+        <div className='text-container'>
+          <h3>Selecciona una respuesta</h3>
+        </div>
         <form>
           {answers.length > 0 && (
             <>
