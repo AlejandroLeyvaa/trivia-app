@@ -2,28 +2,26 @@ const initialState = {
   user: {},
   theory: [
     {
-      a: 'Impacto ambental',
-      b: 'Magintud',
+      title: 'Medio ambiente',
+      content:
+        'El medio ambiente es el entorno vital. Está constituido por elementos físicos, biológicos, económicos, sociales, culturales y estéticos, estos elementos interactuan entre ellos mismos o con los otros. A estos elementos se les conoce como "factores ambientales"',
     },
     {
-      a: 'C',
-      b: 'D',
-    },
-    {
-      a: 'E',
-      b: 'F',
-    },
-    {
-      a: 'G',
-      b: 'H',
-    },
+      title: 'Ecosistema',
+      content: '',
+    }
   ],
   content: [
     {
-      title: 'Impacto ambiental',
-      question: 'Hello',
-      options: ['world', 'word', 'worm'],
-      correctAnswer: 'world',
+      title: 'Medio ambiente',
+      question: '¿Qué es el medio ambiente?',
+      options: [
+        'Un medio de comunicación',
+        'Es el entorno vital, en él interactuan sus componentes entre sí mismos o con los otros',
+        'Es un entorno en el que existe vida',
+      ],
+      correctAnswer:
+        'Es el entorno vital, en él interactuan sus componentes entre sí mismos o con los otros',
     },
   ],
   currentAnswer: {},

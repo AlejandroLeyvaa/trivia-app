@@ -15,6 +15,7 @@ import PrivateRoute from '../auth/PrivateRoute';
 import EditProfile from '../components/EditProfile';
 
 import '../static/styles/mobile.css';
+import '../static/styles/desktop.css';
 
 const App = () => {
   const initialState = useInitialState();

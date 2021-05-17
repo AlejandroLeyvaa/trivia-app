@@ -34,8 +34,8 @@ const Home = (props) => {
       <div className='top-container'>
         <ImageContainer cls='image-container' src={image} />
         <div className='text-container'>
-          <h2>{theory[count].a}</h2>
-          <p>{theory[count].b}</p>
+          <h2>{theory[count].title}</h2>
+          <p>{theory[count].content}</p>
         </div>
       </div>
       <div className='bottom-container'>
