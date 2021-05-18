@@ -2,26 +2,51 @@ const initialState = {
   user: {},
   theory: [
     {
-      title: 'Medio ambiente',
-      content:
-        'El medio ambiente es el entorno vital. Está constituido por elementos físicos, biológicos, económicos, sociales, culturales y estéticos, estos elementos interactuan entre ellos mismos o con los otros. A estos elementos se les conoce como "factores ambientales"',
+      title: 'Las Células',
+      content: `
+      Todos los seres vivos estamos formados por células.
+      Nuestro cerebro está hecho de células, al igual que la piel,
+      los músculos y nuestros órganos, por lo que el origen de la vida
+      y el de las células van de la mano.`,
     },
     {
-      title: 'Ecosistema',
-      content: '',
-    }
-  ],
-  content: [
+      title: 'Teoría celular',
+      content: [
+        'Todos los organismos están compuestos por una o más células.',
+        'La célula es la unidad estructural de la vida.',
+        'Las células pueden surgir únicamente por la división de otra célula.',
+      ],
+    },
     {
-      title: 'Medio ambiente',
-      question: '¿Qué es el medio ambiente?',
+      title: 'Propiedades básicas de las células',
+      content: [
+        'La propiedad básica de las células es la vida, siendo la unidad más pequeña con esta propiedad.',
+        'La muerte es una propiedad básica, si una célula es dañada, es probable que muera.',
+      ],
+    },
+  ],
+  questionsContent: [
+    {
+      title: 'La célula',
+      question: 'Es la unidad básica de la vida',
       options: [
-        'Un medio de comunicación',
-        'Es el entorno vital, en él interactuan sus componentes entre sí mismos o con los otros',
-        'Es un entorno en el que existe vida',
+        'La célula',
+        'Organos',
+        'No se requiere nada para crear vida',
       ],
       correctAnswer:
-        'Es el entorno vital, en él interactuan sus componentes entre sí mismos o con los otros',
+        'La célula',
+    },
+    {
+      title: '1',
+      question: '2',
+      options: [
+        '3',
+        '4',
+        '5',
+      ],
+      correctAnswer:
+        '5',
     },
   ],
   currentAnswer: {},

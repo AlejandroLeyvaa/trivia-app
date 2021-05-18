@@ -1,7 +1,7 @@
 :root {
   --margin: 1.6rem;
   --padding: 1.6rem;
-  --linear-gradinet: linear-gradient(230deg, #ecf7e8 10%, #fff 70%);
+  --linear-gradinet: linear-gradient(230deg, #4b027b 10%, #fff 70%);
   --box-shadow-left: -2px -2px 1px 1px rgba(0, 0, 0, 0.05);
   --box-shadow-right: 2px 2px 1px 1px rgba(0, 0, 0, 0.05);
   --primary-color: #315343;
@@ -79,8 +79,6 @@ button {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 10% auto 10%;
 }
-
-
 
 .header,
 .main,
@@ -185,7 +183,7 @@ button {
   width: 50%;
   height: 3px;
   background: var(--primary-color);
-  margin-block-end: 0.2rem;
+  margin: 0.1rem;
 }
 
 .main {
@@ -196,7 +194,7 @@ button {
 .main .bottom-container .button-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .button-container .button {
@@ -205,10 +203,21 @@ button {
   height: 32px;
 }
 
+.bottom-container .next {
+  margin: 0 0 0 auto;
+}
+
+.play {
+  border-radius: 25px;
+  width: 100%;
+  height: 32px;
+  margin: 1.6rem 0;
+}
+
 .main .top-container .text-container {
   width: 100%;
-  min-height: 350px;
-  max-height: 350px;
+  min-height: 250px;
+  max-height: 250px;
   overflow: auto;
   margin: 1.6rem 0;
 }
@@ -253,13 +262,58 @@ button {
   height: 50%;
 }
 
+.modal {
+  width: 100%;
+  height: 50vh;
+  color: #fff;
+  text-align: center;
+  padding: 1.6rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25vh;
+}
+
+.modal .container {
+  background: var(--primary-color);
+  border-radius: 10px;
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 2.4rem 1.6rem;
+}
+
+.modal .container .circle {
+  margin: 0 auto;
+}
+
+.modal .container h2 {
+  margin: 1.6rem 0;
+}
+
+.modal .container .button {
+  border: 3px solid #fff;
+  border-radius: 25px;
+  padding: 1.2rem;
+}
+
+.main .top-container .question .text-container {
+  height: max-content;
+  max-height: revert;
+  min-height: revert;
+}
+
 .answer :is(form) {
   height: max-content;
   display: flex;
   flex-direction: column;
 }
 
-.answer .options, .answer form :is(button) {
+.answer .options,
+.answer form :is(button) {
   height: 32px;
   color: #315343;
   font-size: 1.6rem;
@@ -268,9 +322,9 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-block-end: 1.6rem;
-} 
+}
 
-.answer form :is(button)  {
+.answer form :is(button) {
   border-radius: 25px;
   height: 32px;
   color: #fff;
@@ -283,6 +337,8 @@ button {
 .button {
   background-color: #315343;
   color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .answer .options :is(input) {
@@ -305,7 +361,6 @@ button {
   font-size: 1.6rem;
   font-weight: 400;
   margin-block-end: 0.8rem;
-  /*! height: ; */
   overflow: auto;
 }
 
@@ -322,4 +377,3 @@ button {
   width: 32px;
   height: 32px;
 }
-

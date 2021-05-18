@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import AuthApi from '../auth/AuthApi';
 import helper from '../auth/helper';
-import ImageContainer from './ImageContainer';
 
 const Header = ({ userImage, userName, heroImage, path, history }) => {
   const authApi = new AuthApi();
   const [modal, setModal] = useState(false);
 
-  function handleModal(e) {
-    console.log(modal);
+  function handleModal() {
     setModal(true);
   }
 
@@ -20,7 +18,7 @@ const Header = ({ userImage, userName, heroImage, path, history }) => {
   return (
     <header className='header'>
       <Link className='logo' to='/'>
-        <span>Educacion ambiental</span>
+        <span>La célula</span>
       </Link>
       <button type='button' className='menu' onClick={handleModal}>
         <div className='burguer'>
